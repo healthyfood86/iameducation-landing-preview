@@ -215,19 +215,33 @@ const FORM_ENDPOINT = null;
   /* ---------- hero video ---------- */
   // The video carries preload="none", so nothing downloads until this click.
   // Controls appear only once it is playing, keeping the poster state clean.
-  var hv = $('#heroVideo'), hvFrame = $('#videoFrame'), hvBtn = $('.play');
+  var hv = $('#heroVideo'), hvFrame = $('#videoFrame'), hvBtn = $('.play'), hvCap = $('.caption');
+
+  function restoreRing() {
+    hvFrame.classList.remove('is-playing', 'is-loading');
+    hvBtn.hidden = false;
+    hv.removeAttribute('controls');
+  }
+
   if (hv && hvBtn && hvFrame) {
     hvBtn.addEventListener('click', function () {
-      hv.setAttribute('controls', '');
-      hvFrame.classList.add('is-playing');
       hvBtn.hidden = true;
+      // the file is a few seconds away on a phone; show that rather than nothing
+      hvFrame.classList.add('is-loading');
+      hv.setAttribute('controls', '');
       var p = hv.play();
-      // if the browser refuses (codec or policy) put the ring back rather than dead-end
-      if (p && p.catch) p.catch(function () {
-        hvFrame.classList.remove('is-playing');
-        hvBtn.hidden = false;
-        hv.removeAttribute('controls');
-      });
+      if (p && p.catch) p.catch(restoreRing);
     });
+
+    hv.addEventListener('playing', function () {
+      hvFrame.classList.remove('is-loading');
+      hvFrame.classList.add('is-playing');
+    });
+
+    // if the file itself is missing or unreadable, say so instead of looping the ring
+    hv.addEventListener('error', function () {
+      restoreRing();
+      if (hvCap) { hvCap.textContent = '影片暂时无法播放，请稍后再试'; hvCap.classList.add('caption--fail'); }
+    }, true);
   }
 })();

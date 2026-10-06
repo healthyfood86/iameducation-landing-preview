@@ -68,12 +68,16 @@ a { color: inherit; }
 .topbar__cta:hover { border-bottom-color: var(--gold); }
 
 /* hero */
-.hero { position: relative; min-height: 100vh; padding: 120px 0 130px; overflow: hidden; display: flex; align-items: center; background: var(--ivory); }
+.hero { position: relative; min-height: 100vh; min-height: 100svh; padding: clamp(88px, 11vh, 130px) 0 clamp(64px, 8vh, 112px); overflow: hidden; display: flex; align-items: center; background: var(--ivory); }
 .hero__bg { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
 .layer { position: absolute; will-change: transform; }
+/* Lives inside .hero__media now, so it reads as light behind Ray. Centred on the
+   frame: left -45% of a 190% box, and the -95% top margin is 95% of the WIDTH,
+   which is exactly half the square's height. */
 .layer--sunburst {
-  width: min(900px, 120vw); height: auto; left: 50%; top: -8%; margin-left: calc(min(900px, 120vw) / -2); opacity: .22;
-  -webkit-mask-image: radial-gradient(circle, #000 20%, transparent 68%); mask-image: radial-gradient(circle, #000 20%, transparent 68%);
+  width: 190%; height: auto; left: -45%; top: calc(50% - 20px); margin-top: -95%;
+  opacity: .2; z-index: 0;
+  -webkit-mask-image: radial-gradient(circle, #000 10%, transparent 58%); mask-image: radial-gradient(circle, #000 10%, transparent 58%);
 }
 .layer--arc { border-radius: 50%; }
 .layer--arc-sand { width: 70vw; max-width: 900px; aspect-ratio: 1; background: var(--sand); opacity: .45; right: -22%; top: -20%; }
@@ -82,19 +86,24 @@ a { color: inherit; }
    Phone (below): headline first, then video, then form — the hook has to be
    readable before a 9:16 video pushes everything off the first screen. */
 .hero__grid {
-  display: grid; grid-template-columns: 11fr 9fr;
+  /* --vidw is the frame's real width and the column's width at once. An 11fr
+     column left 260px of bare paper beside a 9:16 video; tying the two together
+     removes the hole and keeps the two columns close to equal height. */
+  --vidw: min(372px, 27vw, 41vh);
+  display: grid;
+  grid-template-columns: var(--vidw) minmax(0, 496px);
   grid-template-areas: "media head" "media form";
   grid-template-rows: auto auto;
-  gap: clamp(20px, 3vw, 36px) clamp(32px, 6vw, 88px); align-items: center;
+  justify-content: center;
+  column-gap: clamp(38px, 5vw, 80px); row-gap: clamp(14px, 1.8vw, 26px);
+  align-items: center;
 }
-.hero__media { grid-area: media; align-self: center; }
+.hero__media { grid-area: media; align-self: center; position: relative; will-change: transform; }
 .hero__head  { grid-area: head; align-self: end; }
 .hero__copy  { grid-area: form; align-self: start; }
-.hero__media { will-change: transform; }
 .videoframe {
-  position: relative; aspect-ratio: 9 / 16;
-  /* 35vh keeps the tall frame inside the first screen on short laptops */
-  width: min(340px, 35vh); margin-inline: auto;
+  position: relative; z-index: 1; aspect-ratio: 9 / 16;
+  width: var(--vidw, min(340px, 35vh)); margin-inline: auto;
   background: var(--ink); overflow: hidden; border-radius: 2px;
   box-shadow: 0 30px 70px -40px rgba(70,58,44,.5); border: 1px solid rgba(203,189,169,.45);
 }
@@ -108,28 +117,38 @@ a { color: inherit; }
   box-shadow: 0 2px 18px rgba(44,41,37,.22);
   transition: background .3s var(--ease), transform .3s var(--ease), border-color .3s;
 }
+/* display:grid above beats the browser's own hide-when-hidden rule, so the ring
+   sat on top of the playing video until this. */
+.play[hidden] { display: none; }
 .play svg { filter: drop-shadow(0 1px 2px rgba(44,41,37,.45)); }
 .play:hover { background: rgba(44,41,37,.3); border-color: #fff; transform: scale(1.05); }
 /* once it is playing the ring and the gradient get out of the way */
 .videoframe.is-playing::after { opacity: 0; }
+/* the file only starts downloading on the tap, so say so rather than sit silent */
+.videoframe.is-loading::before {
+  content: "载入中…"; position: absolute; inset: 0; z-index: 3; display: grid; place-items: center;
+  color: #fff; font-size: .86rem; letter-spacing: .22em; text-shadow: 0 1px 3px rgba(44,41,37,.6);
+}
+.caption--fail { color: var(--err); letter-spacing: .06em; }
 /* lifts the lower edge of the frame so the ring and caption always have ground under them */
 .videoframe::after {
   content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 38%; pointer-events: none;
   background: linear-gradient(to top, rgba(44,41,37,.16), transparent);
 }
-.caption { margin: 14px 0 0; font-size: .88rem; color: var(--ink-faint); letter-spacing: .12em; text-align: center; }
+.caption { position: relative; z-index: 1; margin: 14px 0 0; font-size: .88rem; color: var(--ink-faint); letter-spacing: .12em; text-align: center; }
 .hero__head { will-change: transform, opacity; }
-.hero h1 { font-size: clamp(2rem, 6vw, 3.4rem); line-height: 1.45; margin-bottom: .5em; }
-.hero .sub { color: var(--ink-soft); margin-bottom: 2em; }
-.scrollhint { position: absolute; left: 0; right: 0; bottom: 28px; z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 10px; font-size: .75rem; color: var(--ink-faint); letter-spacing: .3em; }
-.scrollhint__line { width: 1px; height: 40px; background: var(--gold); transform-origin: top; animation: pulse 2.8s ease-in-out infinite; }
+.hero h1 { font-size: clamp(2rem, 4.4vw, 3.05rem); line-height: 1.24; margin-bottom: .42em; }
+/* the grid row-gap already separates this from the form card; the 2em was dead space */
+.hero .sub { color: var(--ink-soft); margin-bottom: 0; }
+.scrollhint { position: absolute; left: 0; right: 0; bottom: 22px; z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 10px; font-size: .75rem; color: var(--ink-faint); letter-spacing: .3em; }
+.scrollhint__line { width: 1px; height: 30px; background: var(--gold); transform-origin: top; animation: pulse 2.8s ease-in-out infinite; }
 @keyframes pulse { 0%,100% { opacity: .25; transform: scaleY(.6); } 50% { opacity: .9; transform: scaleY(1); } }
 
 /* cards and forms */
 .card { background: rgba(255,255,255,.55); border: 1px solid rgba(203,189,169,.45); border-radius: 2px; box-shadow: 0 18px 50px -30px rgba(70,58,44,.35); }
 .card--quiet { background: transparent; box-shadow: none; border: 1px solid var(--taupe); padding: clamp(28px, 4vw, 48px); }
-.formcard { padding: clamp(26px, 4vw, 40px); position: relative; }
-.formcard__title { font-size: 1.35rem; margin-bottom: 1.2em; }
+.formcard { padding: clamp(24px, 3.2vw, 34px); position: relative; }
+.formcard__title { font-size: 1.3rem; margin-bottom: .85em; }
 .formcard__form, .formcard__done { transition: opacity .3s ease; }
 .formcard.is-leaving .formcard__form { opacity: 0; }
 .formcard__done { opacity: 0; text-align: center; }
@@ -137,7 +156,7 @@ a { color: inherit; }
 .formcard.is-done .formcard__done { opacity: 1; }
 .formcard__done p { margin-bottom: 1em; }
 .done__title { font-size: 1.4rem; margin: .6em 0 1em; outline: none; }
-.field { margin-bottom: 1.2em; }
+.field { margin-bottom: .95em; }
 .field label { display: block; font-size: .85rem; color: var(--ink); letter-spacing: .12em; margin-bottom: .2em; }
 .field input {
   width: 100%; min-height: 48px; padding: 8px 14px; font: inherit; font-size: 1rem; color: var(--ink); letter-spacing: .04em;
@@ -154,7 +173,7 @@ a { color: inherit; }
 }
 .btn:hover { background: var(--sage); border-color: var(--sage); }
 .btn:disabled { opacity: .6; cursor: default; }
-.micro { margin: 1.2em 0 0; text-align: center; font-size: .78rem; color: var(--ink-faint); letter-spacing: .1em; line-height: 1.8; }
+.micro { margin: .95em 0 0; text-align: center; font-size: .78rem; color: var(--ink-faint); letter-spacing: .1em; line-height: 1.8; }
 
 /* sections */
 .section { position: relative; padding: var(--pad) 0; overflow: hidden; }
@@ -249,11 +268,14 @@ a { color: inherit; }
 
 /* responsive */
 @media (max-width: 900px) {
-  .hero__grid { grid-template-columns: 1fr; grid-template-areas: "head" "media" "form"; row-gap: clamp(28px, 5vw, 44px); }
+  .hero__grid {
+    --vidw: min(300px, 64vw, 33vh);
+    grid-template-columns: minmax(0, 520px);
+    grid-template-areas: "head" "media" "form";
+    row-gap: clamp(22px, 4vw, 34px);
+  }
   .hero__head { align-self: auto; text-align: center; }
-  .hero { padding-top: 96px; }
-  /* the 35vh cap is a desktop concern only; on a phone the hero may run tall */
-  .videoframe { width: min(330px, 72vw); }
+  .hero { padding-top: 92px; }
   .ray__grid { grid-template-columns: 1fr; }
   .cards--five { grid-template-columns: 1fr 1fr; }
   .cards--five .rcard, .cards--five .rcard:nth-child(4), .cards--five .rcard:nth-child(5) { grid-column: auto; }
@@ -266,8 +288,10 @@ a { color: inherit; }
   .cards--five .rcard:nth-child(5) { max-width: none; grid-column: auto; }
   .wrap { padding: 0 20px; }
   .scrollhint { display: none; }
-  .hero { padding-bottom: 80px; }
-  .videoframe { width: min(300px, 76vw); }
+  /* sized so the form card's top edge clears the fold: seeing it is a better
+     invitation to scroll than any arrow */
+  .hero__grid { --vidw: min(240px, 64vw, 28vh); }
+  .hero { padding-top: 84px; padding-bottom: 64px; }
 
   /* Three stats side by side left ~90px each, so every label broke with a single
      orphan character on line two. One per row, number and label on one baseline. */
@@ -293,6 +317,18 @@ a { color: inherit; }
   /* breaks tuned for a wide column leave ragged half-lines on a phone */
   .brk { display: none; }
 }
+
+/* Short laptops (1366x768 and the like). Without this the form card's lower
+   half falls below the fold, which is the one thing in the hero that must not. */
+@media (min-width: 901px) and (max-height: 820px) {
+  .hero { padding-top: 80px; padding-bottom: 46px; }
+  .hero h1 { font-size: clamp(1.75rem, 3.5vw, 2.45rem); }
+  .formcard { padding: 26px 30px; }
+  .formcard__title { font-size: 1.18rem; margin-bottom: .7em; }
+  .field { margin-bottom: .8em; }
+}
+/* below roughly 900px tall the hint would cross the form card, so it stands down */
+@media (max-height: 900px) { .scrollhint { display: none; } }
 
 /* reduced motion: everything final and visible */
 @media (prefers-reduced-motion: reduce) {

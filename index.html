@@ -45,15 +45,15 @@
 <!-- 5.1 HERO -->
 <section class="hero" id="top">
   <div class="hero__bg" aria-hidden="true">
-    <svg class="layer layer--sunburst" data-px="0.12" data-px-hero viewBox="-300 -300 600 600" width="900" height="900" focusable="false">
-      <circle r="150" fill="none" stroke="#AD8C57" stroke-width="300" stroke-dasharray="0.9 18.0" opacity=".5"/>
-    </svg>
     <div class="layer layer--arc layer--arc-sand" data-px="0.22" data-px-hero></div>
     <div class="layer layer--arc layer--arc-sage" data-px="0.30" data-px-hero></div>
   </div>
 
   <div class="wrap hero__grid">
     <div class="hero__media" data-px="0.5" data-px-hero data-amp="0.18">
+      <svg class="layer layer--sunburst" data-px="0.12" data-px-hero viewBox="-300 -300 600 600" width="900" height="900" aria-hidden="true" focusable="false">
+        <circle r="150" fill="none" stroke="#AD8C57" stroke-width="300" stroke-dasharray="0.9 18.0" opacity=".5"/>
+      </svg>
       <div class="videoframe" id="videoFrame">
         <!-- ==========================================================
              VIDEO SOURCES — the only two lines to change if the video
@@ -63,7 +63,6 @@
              ========================================================== -->
         <video id="heroVideo" poster="assets/images/hero-poster.webp"
                preload="none" playsinline width="1080" height="1920">
-          <source src="assets/video/hero.webm" type="video/webm">
           <source src="assets/video/hero.mp4" type="video/mp4">
         </video>
         <button class="play" type="button" aria-label="播放 Ray 的影片，约 5 分钟">
