@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>树洞计划 — 给一直很懂事、很能扛的你 | I'M EDUCATION</title>
+<meta name="description" content="树洞计划：一次安静的、完全保密的倾听。这里没有大道理，也没有人催你改变。留下称呼和 WhatsApp，顾问会与你确认一个你方便的时间。">
+<meta name="color-scheme" content="light">
+<link rel="canonical" href="https://imeducation.pages.dev/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="树洞计划 — 给一直很懂事、很能扛的你">
+<meta property="og:description" content="这里没有大道理，也没有人催你改变。只有一次安静的、完全保密的倾听。">
+<meta property="og:image" content="https://imeducation.pages.dev/assets/images/units-flatlay.webp">
+<meta property="og:url" content="https://imeducation.pages.dev/">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="树洞计划 — 给一直很懂事、很能扛的你">
+<meta name="twitter:description" content="这里没有大道理，也没有人催你改变。只有一次安静的、完全保密的倾听。">
+<meta name="twitter:image" content="https://imeducation.pages.dev/assets/images/units-flatlay.webp">
+<link rel="preload" as="image" href="assets/images/hero-poster.webp" fetchpriority="high">
+<link rel="icon" type="image/png" href="assets/images/logo-mark.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&family=Noto+Serif+SC:wght@200;300;400&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add('js');</script>
+<link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+<div class="paper" aria-hidden="true"></div>
+<a class="skip" href="#main">跳到主要内容</a>
+
+<div class="topbar-bg" id="topbarBg" aria-hidden="true"></div>
+<header class="topbar" id="topbar">
+  <div class="topbar__in">
+    <a class="brand" href="#top" aria-label="I'M EDUCATION">
+      <img src="assets/images/logo-mark.webp" width="38" height="36" alt="" class="brand__mark">
+      <span class="label brand__name">I'M EDUCATION</span>
+    </a>
+    <a class="topbar__cta" href="#join">预约倾听</a>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- 5.1 HERO -->
+<section class="hero" id="top">
+  <div class="hero__bg" aria-hidden="true">
+    <svg class="layer layer--sunburst" data-px="0.12" data-px-hero viewBox="-300 -300 600 600" width="900" height="900" focusable="false">
+      <circle r="150" fill="none" stroke="#AD8C57" stroke-width="300" stroke-dasharray="0.9 18.0" opacity=".5"/>
+    </svg>
+    <div class="layer layer--arc layer--arc-sand" data-px="0.22" data-px-hero></div>
+    <div class="layer layer--arc layer--arc-sage" data-px="0.30" data-px-hero></div>
+  </div>
+
+  <div class="wrap hero__grid">
+    <div class="hero__media" data-px="0.5" data-px-hero data-amp="0.18">
+      <div class="videoframe" id="videoFrame">
+        <!-- ==========================================================
+             VIDEO SOURCES — the only two lines to change if the video
+             is hosted somewhere other than this folder. Replace each
+             src with the full https:// address; nothing else moves.
+             preload="none" means nothing downloads until someone taps.
+             ========================================================== -->
+        <video id="heroVideo" poster="assets/images/hero-poster.webp"
+               preload="none" playsinline width="1080" height="1920">
+          <source src="assets/video/hero.webm" type="video/webm">
+          <source src="assets/video/hero.mp4" type="video/mp4">
+        </video>
+        <button class="play" type="button" aria-label="播放 Ray 的影片，约 5 分钟">
+          <svg width="15" height="17" viewBox="0 0 15 17" aria-hidden="true"><path d="M2 1.5v14l11.5-7z" fill="#FFFFFF"/></svg>
+        </button>
+      </div>
+      <p class="caption">Ray · 约 5 分钟 · 附字幕</p>
+    </div>
+
+    <div class="hero__head" id="heroHead">
+      <p class="label">I'M EDUCATION · 树洞计划</p>
+      <h1>给一直很懂事、<br>很能扛的你</h1>
+      <p class="sub">这里没有大道理，也没有人催你改变。<br>只有一次安静的、完全保密的倾听。</p>
+    </div>
+
+    <div class="hero__copy" id="heroCopy">
+      <div class="card formcard" data-form-card>
+        <div class="formcard__form">
+          <h2 class="formcard__title">走进树洞</h2>
+          <form class="capture" novalidate>
+            <div class="field">
+              <label for="name-1">怎么称呼你</label>
+              <input id="name-1" name="name" type="text" autocomplete="name" placeholder="你的名字或昵称" aria-describedby="name-1-err">
+              <p class="err" id="name-1-err" aria-live="polite"></p>
+            </div>
+            <div class="field">
+              <label for="phone-1">WhatsApp 号码</label>
+              <input id="phone-1" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="顾问将与你确认交流时间" aria-describedby="phone-1-err">
+              <p class="err" id="phone-1-err" aria-live="polite"></p>
+            </div>
+            <button class="btn" type="submit">走进树洞，预约一次安静的倾听　→</button>
+            <p class="err err--form" aria-live="polite"></p>
+            <p class="micro">全程严格保密 · 无强制说教 · 绝无推销打扰</p>
+          </form>
+        </div>
+        <div class="formcard__done" role="status" hidden>
+          <div class="disc disc--sm" aria-hidden="true"><span>·</span></div>
+          <h2 class="done__title" tabindex="-1">我们收到了。</h2>
+          <p>顾问会在 24 小时内透过 WhatsApp 与你联系，<br>确认一个你方便的时间。</p>
+          <p>在那之前，不用准备什么。<br>你可以就这样，先深呼吸一下。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="scrollhint" aria-hidden="true"><span class="scrollhint__line"></span><span>往下看看</span></div>
+</section>
+
+<!-- 5.2 REACTIONS -->
+<section class="section section--ivory" id="reactions">
+  <div class="motif motif--ring" data-px="0.18" aria-hidden="true" style="top:6%;right:6%"></div>
+  <div class="motif motif--sprig" data-px="0.30" aria-hidden="true" style="top:46%;left:2%">
+    <svg viewBox="0 0 80 160" width="80" height="160" fill="none" stroke="#AFBBA8" stroke-width="1.2" stroke-linecap="round"><path d="M40 158C40 110 42 60 52 6"/><path d="M41 130c-14-4-24-14-26-26 14 0 24 8 26 26zM42 104c14-4 22-14 24-26-14 0-22 8-24 26zM44 78c-12-4-20-12-22-24 12 0 20 8 22 24zM46 52c12-4 18-12 20-22-12 0-18 8-20 22zM50 28c-8-3-12-9-14-16 8 0 12 6 14 16z"/></svg>
+  </div>
+  <div class="wrap">
+    <header class="sechead reveal-group">
+      <p class="label reveal" style="--i:0">01 — 你是不是也这样</p>
+      <h2 class="reveal" style="--i:1">很多道理你其实都懂</h2>
+      <p class="lead reveal" style="--i:2">但当事情发生的那一刻，那些熟悉的反应，总是比理智更快。</p>
+    </header>
+
+    <div class="cards cards--five" id="reactionCards">
+      <article class="card rcard reveal" style="--i:0"><div class="rcard__in" data-drift="1">
+        <span class="num">01</span><h3>退让</h3>
+        <p class="q">为什么你明明不同意，却还是点头？</p>
+        <p>明明心里不太情愿，但为了不把关系闹僵、不让气氛变尴尬，最后脱口而出的还是那句：「好，没问题。」</p></div></article>
+      <article class="card rcard reveal" style="--i:1"><div class="rcard__in" data-drift="-1">
+        <span class="num">02</span><h3>证明</h3>
+        <p class="q">为什么你越努力，越觉得自己不够？</p>
+        <p>付出了很多努力却没有被看见、被认可。忍不住一遍又一遍地解释，只是太想证明自己其实没有做错。</p></div></article>
+      <article class="card rcard reveal" style="--i:2"><div class="rcard__in" data-drift="1">
+        <span class="num">03</span><h3>绑定</h3>
+        <p class="q">为什么越不确定的回应，越让你放不下？</p>
+        <p>对方只要语气稍微冷淡、迟迟没有回复信息，你的心就悬在半空，反复回想自己到底哪句话说错了。</p></div></article>
+      <article class="card rcard reveal" style="--i:3"><div class="rcard__in" data-drift="-1">
+        <span class="num">04</span><h3>拯救</h3>
+        <p class="q">为什么最后总是你在处理所有人的情绪？</p>
+        <p>习惯了去照顾身边所有人的感受。看到别人遇上麻烦，即便自己已经精疲力竭，也狠不下心放手不管。</p></div></article>
+      <article class="card rcard reveal" style="--i:4"><div class="rcard__in" data-drift="1">
+        <span class="num">05</span><h3>缩小</h3>
+        <p class="q">你从什么时候开始，不敢占据自己的位置？</p>
+        <p>心里明明有委屈、有需要，但话到嘴边又咽了回去，习惯性地安慰自己：「算了，别给别人添麻烦了。」</p></div></article>
+    </div>
+
+    <div class="closing reveal-group">
+      <span class="rule reveal" style="--i:0"></span>
+      <p class="reveal" style="--i:1">这不是软弱。</p>
+      <p class="reveal" style="--i:2">这是你的大脑，为了让你在这个世界上<br class="brk">不被讨厌、不被抛弃，<br class="brk">而演化出的一套保护机制。</p>
+      <p class="reveal" style="--i:3">它曾经保护过你。</p>
+    </div>
+  </div>
+</section>
+
+<!-- 5.3 RAY -->
+<section class="section section--linen" id="ray">
+  <div class="motif motif--disc" data-px="0.12" aria-hidden="true" style="top:8%;left:-60px"></div>
+  <div class="wrap ray__grid">
+    <div class="ray__media reveal">
+      <div class="pframe" data-band="0.07">
+        <picture>
+          <source srcset="assets/images/ray-portrait.webp" type="image/webp">
+          <img src="assets/images/ray-portrait.jpg" width="531" height="572" alt="顾问 Ray" loading="lazy" decoding="async">
+        </picture>
+      </div>
+    </div>
+    <div class="ray__copy reveal-group">
+      <p class="label reveal" style="--i:0">02 — 陪你坐在一起的人</p>
+      <h2 class="reveal" style="--i:1">我是 Ray</h2>
+      <p class="reveal" style="--i:2">我懂那种「身体被掏空」的累。</p>
+      <p class="reveal" style="--i:3">在这条路上，我曾经历过长达 10 年的情绪消耗与自我迷失。</p>
+      <p class="reveal" style="--i:4">我不仅拥有马来西亚国家疗愈认证和 20 年的实践经验，<br class="brk">更重要的是，我明白那种「懂道理却做不到」的无力感。</p>
+      <p class="reveal" style="--i:5">我在这里，不是要带你飞向虚幻的灵性世界，<br class="brk">而是要陪你在现实中站稳。</p>
+      <ul class="stats reveal" style="--i:6">
+        <li><strong>20年</strong><span>深耕实践与探索</span></li>
+        <li><strong>10+</strong><span>国家级疗愈认证</span></li>
+        <li><strong>1000+</strong><span>学员的真实见证</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 5.4 PROMISE -->
+<section class="section section--sand" id="promise">
+  <div class="motif motif--sage" data-px="0.2" aria-hidden="true" style="top:10%;right:-80px"></div>
+  <div class="motif motif--ring" data-px="0.35" aria-hidden="true" style="bottom:12%;left:5%"></div>
+  <div class="wrap">
+    <header class="sechead reveal-group">
+      <p class="label reveal" style="--i:0">03 — 树洞计划的承诺</p>
+      <h2 class="reveal" style="--i:1">在这里，你不需要把自己整理得很完整才来</h2>
+    </header>
+    <div class="promises">
+      <article class="promise reveal" style="--i:0">
+        <div class="disc" aria-hidden="true"><span>01</span></div>
+        <h3>我们不急着下定义</h3>
+        <p>你不会在这里听到「你是缺乏安全感」、「你人格有问题」这种冷冰冰的标签。</p>
+      </article>
+      <article class="promise reveal" style="--i:1">
+        <div class="disc" aria-hidden="true"><span>02</span></div>
+        <h3>我们不急着给建议</h3>
+        <p>这里没有居高临下的指导，也不会催促你「应该立刻怎么做」、「明天起就要改变」。</p>
+      </article>
+      <article class="promise reveal" style="--i:2">
+        <div class="disc" aria-hidden="true"><span>03</span></div>
+        <h3>我们只是陪你看见</h3>
+        <p>每一个看似别扭、委屈的反应，在它最初形成的时候，都是为了保护那个孤单的你。</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- 5.5 QUIET BAND -->
+<section class="band" aria-label="安静的一刻">
+  <div class="band__frame" data-band="0.14">
+    <img src="assets/images/units-flatlay.webp" width="784" height="1392" alt="" loading="lazy" decoding="async">
+  </div>
+  <div class="band__scrim" aria-hidden="true"></div>
+  <div class="band__text reveal-group">
+    <p class="reveal" style="--i:0">平时都是你在给别人做情绪的容器。</p>
+    <p class="reveal" style="--i:1">这一次，换你把情绪交出来。</p>
+  </div>
+</section>
+
+<!-- 5.6 GENTLE NOTICE -->
+<section class="section section--ivory" id="notice">
+  <div class="motif motif--ribbon" data-px="0.15" aria-hidden="true" style="top:5%;left:3%">
+    <svg viewBox="0 0 200 60" width="200" height="60" fill="none" stroke="#CBBDA9" stroke-width="1.2" stroke-linecap="round"><path d="M2 40C30 -6 60 -6 90 30S160 66 198 14"/></svg>
+  </div>
+  <div class="wrap">
+    <header class="sechead reveal-group">
+      <p class="label reveal" style="--i:0">04 — 走进树洞前</p>
+      <h2 class="reveal" style="--i:1">我们想先坦诚地告诉你</h2>
+      <p class="lead reveal" style="--i:2">树洞计划可能和你想的有些不一样。如果你期待的是以下这些，这里可能不适合你：</p>
+    </header>
+    <div class="cards cards--four">
+      <article class="card card--quiet reveal" style="--i:0"><h3>寻找「立竿见影的速成秘籍」</h3><p>我们不会给你一份「3 步搞定人际关系」或「瞬间戒掉情绪」的清单。习惯的形成用了几年甚至几十年，理解自己需要时间。</p></article>
+      <article class="card card--quiet reveal" style="--i:1"><h3>希望有人替你做决定</h3><p>顾问不会告诉你「你应该马上离职」或「你应该选择分手」。人生的主导权始终在你自己手里。</p></article>
+      <article class="card card--quiet reveal" style="--i:2"><h3>希望学习「如何改变别人」</h3><p>如果你的目标是让伴侣、父母或同事变得听话，这里无法提供控制他人的技巧。我们唯一的焦点是你自己。</p></article>
+      <article class="card card--quiet reveal" style="--i:3"><h3>寻求医疗级心理危机干预</h3><p>树洞计划专注于普通人的日常心累、关系内耗与模式觉察，并非临床心理治疗或重度抑郁干预。</p></article>
+    </div>
+  </div>
+</section>
+
+<!-- 5.7 FINAL FORM -->
+<section class="section section--linen section--final" id="join">
+  <div class="motif motif--ring" data-px="0.25" aria-hidden="true" style="top:14%;left:8%"></div>
+  <div class="motif motif--disc" data-px="0.1" aria-hidden="true" style="bottom:10%;right:6%"></div>
+  <div class="wrap wrap--narrow">
+    <header class="sechead sechead--center reveal-group">
+      <h2 class="reveal" style="--i:0">这一次，换你被听见</h2>
+      <p class="lead reveal" style="--i:1">填表不需要写长篇大论，也没有复杂的审核。<br class="brk">留下称呼和 WhatsApp，顾问会与你确认一个你方便的时间。</p>
+    </header>
+
+    <div class="card formcard reveal" style="--i:2" data-form-card>
+      <div class="formcard__form">
+        <form class="capture" novalidate>
+          <div class="field">
+            <label for="name-2">怎么称呼你</label>
+            <input id="name-2" name="name" type="text" autocomplete="name" placeholder="你的名字或昵称" aria-describedby="name-2-err">
+            <p class="err" id="name-2-err" aria-live="polite"></p>
+          </div>
+          <div class="field">
+            <label for="phone-2">WhatsApp 号码</label>
+            <input id="phone-2" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="顾问将与你确认交流时间" aria-describedby="phone-2-err">
+            <p class="err" id="phone-2-err" aria-live="polite"></p>
+          </div>
+          <button class="btn" type="submit">走进树洞，预约一次安静的倾听　→</button>
+          <p class="err err--form" aria-live="polite"></p>
+        </form>
+      </div>
+      <div class="formcard__done" role="status" hidden>
+        <div class="disc disc--sm" aria-hidden="true"><span>·</span></div>
+        <h2 class="done__title" tabindex="-1">我们收到了。</h2>
+        <p>顾问会在 24 小时内透过 WhatsApp 与你联系，<br>确认一个你方便的时间。</p>
+        <p>在那之前，不用准备什么。<br>你可以就这样，先深呼吸一下。</p>
+      </div>
+    </div>
+
+    <ul class="trust reveal" style="--i:3">
+      <li>全程严格保密</li><li>无强制说教</li><li>绝无推销打扰</li>
+    </ul>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap footer__in">
+    <a class="brand" href="#top" aria-label="I'M EDUCATION">
+      <img src="assets/images/logo-mark.webp" width="34" height="33" alt="" class="brand__mark" loading="lazy">
+      <span class="label brand__name">I'M EDUCATION</span>
+    </a>
+    <p>树洞计划 · TREE HOLLOW</p>
+    <p><a href="mailto:imeducation8@gmail.com">imeducation8@gmail.com</a> · <a href="tel:+60123864319">+60123864319</a></p>
+    <p>2-01-50, Pudu Impian IV, No.2, Jalan Pudu Impian 56100 Kuala Lumpur</p>
+    <p><a href="#">隐私政策</a></p>
+    <p class="fine">© 2026 ELEMENTS HOLISTIC WELLNESS PLT（LLP0011651-LGN）. All rights reserved.</p>
+  </div>
+</footer>
+
+<script src="assets/js/main.js" defer></script>
+</body>
+</html>
